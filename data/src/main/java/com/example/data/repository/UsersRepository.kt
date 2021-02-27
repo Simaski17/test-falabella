@@ -12,4 +12,8 @@ class UsersRepository(private val localDataSource: LocalDataSource) {
         return localDataSource.findUserByUsername(username)
     }
 
+    suspend fun signIn(username: String, password: String): List<Users> {
+        return localDataSource.signIn(username, password)
+    }
+
 }

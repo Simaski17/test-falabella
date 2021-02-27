@@ -19,4 +19,8 @@ class RoomDataSource(db: IndicatorDatabase) : LocalDataSource {
         indicatorDao.findUserByUsername(username).map { it.toDomainuser() }
     }
 
+    override suspend fun signIn(username: String, password: String): List<Users> = withContext(Dispatchers.IO) {
+        indicatorDao.signIn(username, password).map { it.toDomainuser() }
+    }
+
 }

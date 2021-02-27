@@ -8,7 +8,8 @@ fun Users.toRoomUser() : DomainUser =
         name,
         firstname,
         username,
-        password
+        password,
+        isOnline
     )
 
 fun DomainUser.toDomainuser(): Users =
@@ -16,5 +17,6 @@ fun DomainUser.toDomainuser(): Users =
         name,
         firstname,
         username,
-        password
+        password,
+        isOnline
     )

@@ -14,4 +14,7 @@ interface IndicatorDao {
     @Query("SELECT * FROM Users WHERE username = :username")
     fun findUserByUsername(username: String): List<Users>
 
+    @Query("SELECT * FROM Users WHERE username = :username AND password = :password")
+    fun signIn(username: String, password: String): List<Users>
+
 }

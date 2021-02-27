@@ -102,7 +102,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                 }
                 DataState.SUCCESS -> {
                     viewModel.saveUser(users = Users(name = etName.text.toString(), firstname = etFirstName.text.toString(), username =
-                    etUsername.text.toString(), password = etPassword.text.toString())
+                    etUsername.text.toString(), password = etPassword.text.toString(), isOnline = false)
                     )
                 }
                 DataState.ERROR -> {
