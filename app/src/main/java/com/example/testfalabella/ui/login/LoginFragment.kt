@@ -40,6 +40,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
         btSignIn.setOnClickListener(this)
         btRegister.setOnClickListener(this)
 
+        val sharedPreferences: SharedPreferences =
+            activity?.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)!!
+
+        val sharedIdValue = sharedPreferences.getBoolean("isOnlinne",false)
+
+        if (sharedIdValue) {
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onClick(v: View?) {
@@ -86,6 +96,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
 
             data.notNull {
+
+                val sharedPreferences: SharedPreferences =
+                    activity?.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)!!
+                val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+                editor.putBoolean("isOnlinne", true)
+                editor.putString("username", it.first().username)
+                editor.apply()
+                editor.commit()
 
                 val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                 findNavController().navigate(action)
