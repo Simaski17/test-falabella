@@ -17,4 +17,8 @@ interface IndicatorDao {
     @Query("SELECT * FROM Users WHERE username = :username AND password = :password")
     fun signIn(username: String, password: String): List<Users>
 
+    //Indicators
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertIndicators(indicator: List<Indicators>)
+
 }
