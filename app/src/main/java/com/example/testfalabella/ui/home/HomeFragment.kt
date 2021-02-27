@@ -55,7 +55,10 @@ class HomeFragment : Fragment() {
         rvIndicatorsList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            homeAdapter = HomeAdapter (){}
+            homeAdapter = HomeAdapter (){
+                val action = HomeFragmentDirections.actionHomeFragmentToIndicatorDetailFragment(code = it.codigo)
+                findNavController().navigate(action)
+            }
             rvIndicatorsList.adapter = homeAdapter
 
         }
