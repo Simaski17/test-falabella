@@ -1,4 +1,4 @@
-package com.example.testfalabella.data
+package com.example.testfalabella.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,6 +9,5 @@ data class Users (
     val firstname: String,
     @PrimaryKey(autoGenerate = false)
     val username: String,
-    val password: String,
-    val isOnline: Boolean
+    val password: String
 )

@@ -3,8 +3,8 @@ package com.example.testfalabella.di
 import android.app.Application
 import androidx.room.Room
 import com.example.data.source.LocalDataSource
-import com.example.testfalabella.data.IndicatorDatabase
-import com.example.testfalabella.data.RoomDataSource
+import com.example.testfalabella.data.database.IndicatorDatabase
+import com.example.testfalabella.data.database.RoomDataSource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

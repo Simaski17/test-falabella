@@ -1,4 +1,8 @@
 package com.example.domain.users
 
-class Users {
-}
+data class Users (
+    val name: String,
+    val firstname: String,
+    val username: String,
+    val password: String
+)

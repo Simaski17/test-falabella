@@ -1,4 +1,4 @@
-package com.example.testfalabella.data
+package com.example.testfalabella.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
