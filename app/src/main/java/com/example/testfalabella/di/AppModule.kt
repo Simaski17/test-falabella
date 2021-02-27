@@ -3,8 +3,11 @@ package com.example.testfalabella.di
 import android.app.Application
 import androidx.room.Room
 import com.example.data.source.LocalDataSource
+import com.example.data.source.RemoteDataSource
 import com.example.testfalabella.data.database.IndicatorDatabase
 import com.example.testfalabella.data.database.RoomDataSource
+import com.example.testfalabella.data.server.TheIndicatorsDbDatasource
+import com.example.testfalabella.data.server.TheIndicatorsDbService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -55,5 +58,14 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideRetrofitServiceApi(): TheIndicatorsDbService {
+        return provideRetrofit().create(TheIndicatorsDbService::class.java)
+    }
+
+    @Provides
+    fun remoteDataSourceProvider(theIndicatorsDbService: TheIndicatorsDbService): RemoteDataSource = TheIndicatorsDbDatasource(theIndicatorsDbService)
 
 }

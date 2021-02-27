@@ -20,4 +20,7 @@
     <string name="snackbar_username">Username already registered</string>
     <string name="snackbar_login">User is not registered.</string>
 
+    <!-- home -->
+    <string name="value">Value</string>
+
 </resources>
