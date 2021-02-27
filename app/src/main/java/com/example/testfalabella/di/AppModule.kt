@@ -2,7 +2,7 @@ package com.example.testfalabella.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.data.LocalDataSource
+import com.example.data.source.LocalDataSource
 import com.example.testfalabella.data.IndicatorDatabase
 import com.example.testfalabella.data.RoomDataSource
 import dagger.Module
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class AppModue {
+class AppModule {
 
     @Provides
     @Singleton

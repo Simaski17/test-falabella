@@ -6,7 +6,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModue::class])
+@Component(modules = [AppModule::class, DataModule::class])
 interface MyFalaTestComponent {
 
     @Component.Factory
