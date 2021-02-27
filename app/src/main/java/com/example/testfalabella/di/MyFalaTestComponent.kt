@@ -1,6 +1,8 @@
 package com.example.testfalabella.di
 
 import android.app.Application
+import com.example.testfalabella.ui.detail.IndicatorDetailFragmentComponent
+import com.example.testfalabella.ui.detail.IndicatorDetailFragmentModule
 import com.example.testfalabella.ui.home.HomeFragmentComponent
 import com.example.testfalabella.ui.home.HomeFragmentModule
 import com.example.testfalabella.ui.login.LoginFragmentComponent
@@ -18,6 +20,7 @@ interface MyFalaTestComponent {
     fun plus(module: RegisterFragmentModule): RegisterFragmentComponent
     fun plus(module: LoginFragmentModule): LoginFragmentComponent
     fun plus(module: HomeFragmentModule): HomeFragmentComponent
+    fun plus(module: IndicatorDetailFragmentModule): IndicatorDetailFragmentComponent
 
     @Component.Factory
     interface Factory {

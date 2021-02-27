@@ -12,4 +12,8 @@ class IndicatorsRepository (private val localDataSource: LocalDataSource, privat
         return indicators
     }
 
+    suspend fun findIndicatorByCode(code: String): List<Indicators> {
+        return localDataSource.findIndicatorByCode(code)
+    }
+
 }

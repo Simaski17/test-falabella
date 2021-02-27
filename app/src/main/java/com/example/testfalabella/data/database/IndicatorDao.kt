@@ -21,4 +21,7 @@ interface IndicatorDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertIndicators(indicator: List<Indicators>)
 
+    @Query("SELECT * FROM Indicators WHERE codigo = :code")
+    fun findIndicatorByCode(code: String): List<Indicators>
+
 }

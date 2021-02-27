@@ -9,5 +9,6 @@ interface LocalDataSource {
     suspend fun findUserByUsername(username: String): List<Users>
     suspend fun signIn(username: String, password: String): List<Users>
     suspend fun saveIndicatorsList(indicators: List<Indicators>)
+    suspend fun findIndicatorByCode(code: String): List<Indicators>
 
 }
