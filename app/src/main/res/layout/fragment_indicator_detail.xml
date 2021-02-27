@@ -46,7 +46,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCodeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCode" />
 
     <TextView
         android:id="@+id/tvUnitTitle"
@@ -59,7 +59,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvDateTitle"
@@ -72,7 +72,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUnitTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUnit" />
 
     <TextView
         android:id="@+id/tvValueTitle"
@@ -85,7 +85,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
