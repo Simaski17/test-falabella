@@ -16,4 +16,7 @@
     <string name="prompt_first_name">First Name</string>
     <string name="button_save">Save</string>
 
+    <!-- dialogs -->
+    <string name="snackbar_username">Username already registered</string>
+
 </resources>

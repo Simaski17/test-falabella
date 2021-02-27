@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.domain.users.Users
 import com.example.testfalabella.R
 import com.example.testfalabella.ui.common.*
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment(), View.OnClickListener {
@@ -26,6 +27,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         component = context?.app?.component?.plus(RegisterFragmentModule())!!
 
         viewModel.model.observe(viewLifecycleOwner, Observer(::updateUi))
+        viewModel.modelFindUser.observe(viewLifecycleOwner, Observer(::findUser))
 
         return root
 
@@ -52,9 +54,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                     Log.e("TAG", "Empty Password")
                     tilPassword.error = "Campo Obligatorio"
                 } else {
-                    viewModel.saveUser(users = Users(name = etName.text.toString(), firstname = etFirstName.text.toString(), username =
-                    etUsername.text.toString(), password = etPassword.text.toString())
-                    )
+                    viewModel.findUserByUsername(username = etUsername.text.toString())
                 }
             }
         }
@@ -92,6 +92,27 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    /* search if username exists */
+    private fun findUser(event: Data<List<Users>>?) {
+
+        event.with {
+            when (dataState) {
+                DataState.LOADING -> {
+                    pbUserRegister.visibility = View.VISIBLE
+                }
+                DataState.SUCCESS -> {
+                    viewModel.saveUser(users = Users(name = etName.text.toString(), firstname = etFirstName.text.toString(), username =
+                    etUsername.text.toString(), password = etPassword.text.toString())
+                    )
+                }
+                DataState.ERROR -> {
+                    pbUserRegister.visibility = View.GONE
+                    view?.let { Snackbar.make(it, R.string.snackbar_username, Snackbar.LENGTH_LONG).show() }
+                }
+            }
+
+        }
+    }
 
 
 }
