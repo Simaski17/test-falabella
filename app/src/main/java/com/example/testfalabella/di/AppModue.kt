@@ -1,5 +1,10 @@
 package com.example.testfalabella.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.data.LocalDataSource
+import com.example.testfalabella.data.IndicatorDatabase
+import com.example.testfalabella.data.RoomDataSource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,6 +16,17 @@ import javax.inject.Singleton
 
 @Module
 class AppModue {
+
+    @Provides
+    @Singleton
+    fun databaseProvider(app: Application) = Room.databaseBuilder(
+        app,
+        IndicatorDatabase::class.java,
+        "users-db"
+    ).build()
+
+    @Provides
+    fun localDataSourceProvider(db: IndicatorDatabase): LocalDataSource = RoomDataSource(db)
 
     @Singleton
     @Provides
