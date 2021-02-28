@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,6 +15,7 @@ import com.example.domain.indicators.Indicators
 import com.example.testfalabella.R
 import com.example.testfalabella.ui.common.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_indicator_detail.*
 
 class HomeFragment : Fragment() {
 
@@ -54,12 +57,26 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             homeAdapter = HomeAdapter (){
+                svIndicatorsList.setQuery("",false)
                 val action = HomeFragmentDirections.actionHomeFragmentToIndicatorDetailFragment(code = it.codigo)
                 findNavController().navigate(action)
             }
             rvIndicatorsList.adapter = homeAdapter
 
         }
+
+        svIndicatorsList.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Toast.makeText(activity, "No Match found", Toast.LENGTH_LONG).show()
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText.length > 2) {
+                    viewModel.findIndicatorByCode(newText)
+                }
+                return false
+            }
+        })
 
     }
 
@@ -80,6 +97,14 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.loginFragment);
                 true
             }
+            R.id.Search -> {
+                if (svIndicatorsList.visibility == View.VISIBLE) {
+                    svIndicatorsList.visibility = View.GONE
+                } else {
+                    svIndicatorsList.visibility = View.VISIBLE
+                }
+                true
+            }
 
             else -> super.onOptionsItemSelected(item)
         }
@@ -90,6 +115,7 @@ class HomeFragment : Fragment() {
         event.with {
             when (dataState) {
                 DataState.LOADING -> {
+                    rvIndicatorsList.visibility = View.GONE
                     tvNotIndicators.visibility = View.GONE
                     pbIndicatorsList.visibility = View.VISIBLE
                 }
