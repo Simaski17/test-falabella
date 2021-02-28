@@ -45,6 +45,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         val sharedIdValue = sharedPreferences.getBoolean("isOnlinne",false)
 
+        Log.e("IIS ONLINE", "VALUE $sharedIdValue")
+
         if (sharedIdValue) {
             val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
             findNavController().navigate(action)

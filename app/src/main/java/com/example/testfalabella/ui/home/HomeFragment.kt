@@ -4,10 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -63,6 +61,28 @@ class HomeFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.item_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.SignOff -> {
+                val sharedPreferences: SharedPreferences =
+                    activity?.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)!!
+                val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+                editor.putBoolean("isOnlinne", false)
+                editor.apply()
+                editor.commit()
+                findNavController().popBackStack(R.id.homeFragment, true);
+                findNavController().navigate(R.id.loginFragment);
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun updateUi(event: Data<List<Indicators>>?) {

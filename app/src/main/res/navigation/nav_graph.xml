@@ -18,6 +18,7 @@
             app:launchSingleTop="false"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/translate_out"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
@@ -25,7 +26,8 @@
             app:enterAnim="@anim/translate_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/translate_out" />
+            app:popExitAnim="@anim/translate_out"
+            app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
