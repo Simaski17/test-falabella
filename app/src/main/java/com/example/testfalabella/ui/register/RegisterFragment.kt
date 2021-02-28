@@ -54,7 +54,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                     Log.e("TAG", "Empty Password")
                     tilPassword.error = "Campo Obligatorio"
                 } else {
-                    viewModel.findUserByUsername(username = etUsername.text.toString())
+                    viewModel.findUserByUsername(username = ChCrypto.aesEncrypt(etUsername.text.toString(), ChCrypto.secretKey))
                 }
             }
         }
@@ -101,8 +101,8 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                     pbUserRegister.visibility = View.VISIBLE
                 }
                 DataState.SUCCESS -> {
-                    viewModel.saveUser(users = Users(name = etName.text.toString(), firstname = etFirstName.text.toString(), username =
-                    etUsername.text.toString(), password = etPassword.text.toString())
+                    viewModel.saveUser(users = Users(name = ChCrypto.aesEncrypt(etName.text.toString(), ChCrypto.secretKey), firstname = ChCrypto.aesEncrypt(etFirstName.text.toString(), ChCrypto.secretKey), username =
+                    ChCrypto.aesEncrypt(etUsername.text.toString(), ChCrypto.secretKey), password = ChCrypto.aesEncrypt(etPassword.text.toString(), ChCrypto.secretKey))
                     )
                 }
                 DataState.ERROR -> {

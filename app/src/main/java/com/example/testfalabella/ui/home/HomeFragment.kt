@@ -49,7 +49,8 @@ class HomeFragment : Fragment() {
         val sharedPreferences: SharedPreferences =
             activity?.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)!!
 
-        val sharedUsername = sharedPreferences.getString("username", "default")
+        val sharedUsername = ChCrypto.aesDecrypt(sharedPreferences.getString("username", "default").toString(), ChCrypto.secretKey)
+
 
         tvHomeTitle.text = "Hola $sharedUsername"
 

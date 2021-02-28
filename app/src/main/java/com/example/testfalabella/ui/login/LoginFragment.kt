@@ -15,6 +15,11 @@ import com.example.testfalabella.R
 import com.example.testfalabella.ui.common.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.etPassword
+import kotlinx.android.synthetic.main.fragment_login.etUsername
+import kotlinx.android.synthetic.main.fragment_login.tilPassword
+import kotlinx.android.synthetic.main.fragment_login.tilUsername
+import kotlinx.android.synthetic.main.fragment_register.*
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
@@ -65,8 +70,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     tilPassword.error = "Campo Obligatorio"
                 } else {
                     viewModel.signIn(
-                        username = etUsername.text.toString(),
-                        password = etPassword.text.toString()
+                        username = ChCrypto.aesEncrypt(etUsername.text.toString(), ChCrypto.secretKey),
+                        password = ChCrypto.aesEncrypt(etPassword.text.toString(), ChCrypto.secretKey)
                     )
                 }
             }
