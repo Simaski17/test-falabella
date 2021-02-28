@@ -4,6 +4,5 @@ data class Users (
     val name: String,
     val firstname: String,
     val username: String,
-    val password: String,
-    val isOnline: Boolean
+    val password: String
 )

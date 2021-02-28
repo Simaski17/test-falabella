@@ -9,6 +9,5 @@ data class Users (
     val firstname: String,
     @PrimaryKey(autoGenerate = false)
     val username: String,
-    val password: String,
-    val isOnline: Boolean
+    val password: String
 )
